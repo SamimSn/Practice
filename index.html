@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>یادآور تمرین :)))</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Vazirmatn font -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="game-container">
+        <h1 id="startText">بیا یه بازی کنیم</h1>
+        <h1 id="startText">اووهووووم؟</h1>
+        <button id="startButton" onclick="startGame()">بزن بریم</button>
+    </div>
+
+    <div class="question-container" style="display:none;">
+        <h1>دینا جون :)</h1>
+        <h1>باخ رو تمرین کن</h1>
+        <div class="button-container">
+            <button id="yesButton" onclick="handleYes()">با کمال میل 😍</button>
+            <button id="noButton" onclick="handleNo()">حوصله ندارم 😒</button>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <p>خییله خب</p>
+        <p>شام میبرمت بیرون</p>
+        <button onclick="closePopup()">تمام</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
