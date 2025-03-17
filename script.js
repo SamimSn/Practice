@@ -22,23 +22,81 @@ function handleYes()
     document.getElementById("popup").style.display = "block"; // Show the popup
 }
 
-function handleNo()
-{
-    const noButton = document.getElementById("noButton");
+let noButtonTexts = [
+    "همچنان نه 😤",
+    "هنوز به راه راست هدایت نشدم 😅",
+    "نمیخواممممم 😩",
+    "دیوونم مگه 🤪",
+    "نه بابا چیکار داری 😜",
+    "این گزینه اصلا معتبر نیست 🧐",
+    "فقط دارم تست میکنم رد میشم 🧪",
+    "نه با تشکر پشیمون نمیشم 🙅♂️",
+    "حتی فکرشم نکن 🚫",
+    "مثل کوه استوارم ⛰️",
+    "نهههه قول دادم نه بگم 🤞",
+    "دارم ورزش نه گفتن میکنم 🏋️♂️",
+    "مگه گزینه «آره» وجود داره؟ 🤔",
+    "تا ابد نه میگم ⏳",
+    "پافشاری من رو ببین 📢",
+    "مثل آفتاب پرست رنگ عوض میکنم 🌈",
+    "نه، ممنون، نه، مرسی 🙏",
+    "دارم رکورد نه گفتن رو میزنم 🏆",
+    "حتی اگه دنیا رو بهم بدی 🌎",
+    "نه حال ندارم امروز بیخیال 🤷♂️"
+];
+let noButtonTextIndex = 0; // Start with the first text
 
-    const maxX = 75;
-    const maxY = 75;
+let lastClickTime = 0; // Track the last click time for debounce
+let hasSwapped = false; // Track if the swap has already happened
 
-    // Ensure the button stays within the screen bounds
+function handleNo() {
+    const currentTime = Date.now();
+    const timeDiff = currentTime - lastClickTime;
+
+    // Check if the time between clicks is less than 200ms
+    if (timeDiff < 200 && !hasSwapped) {
+        // Switch the positions of Yes and No buttons
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const parent = yesButton.parentNode;
+
+        // Swap the buttons in the DOM
+        parent.insertBefore(noButton, yesButton);
+
+        // Add the "ههه پول خوردی" message to the popup
+        const popup = document.getElementById('popup');
+        const message = document.createElement('p');
+        message.textContent = 'ههه گول خوردی';
+        popup.insertBefore(message, popup.firstChild);
+
+        // Mark that the swap has happened
+        hasSwapped = true;
+
+        // Reset the last click time to prevent consecutive swaps
+        lastClickTime = currentTime - 300; // Ensures next click is considered new
+        return; // Exit to skip normal behavior
+    }
+
+    // Proceed with normal behavior (change text and move button)
+    const noButton = document.getElementById('noButton');
+    noButton.textContent = noButtonTexts[noButtonTextIndex];
+    noButtonTextIndex = (noButtonTextIndex + 1) % noButtonTexts.length;
+
+    const maxX = 50;
+    const maxY = 5;
     const randomX = Math.random() * maxX;
     const randomY = Math.random() * maxY;
 
-    // Move the button to the new position
     noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
-    noButton.style.transition = "transform 0.5s ease"; // Smooth transition
+    noButton.style.transition = "transform 0.5s ease";
+
+    // Update the last click time
+    lastClickTime = currentTime;
 }
+
+
 
 function closePopup()
 {
-    document.getElementById("popup").style.display = "none"; // Hide the popup
+    location.reload();
 }
