@@ -33,15 +33,15 @@ let noButtonTexts = [
     "نه با تشکر پشیمون نمیشم 🙅♂️",
     "حتی فکرشم نکن 🚫",
     "مثل کوه استوارم ⛰️",
+    "نه 🚫",
     "نهه 🚫",
+    "نههه 🚫",
     "نهههه 🚫",
+    "نههههه 🚫",
+    "نهههههه 🚫",
+    "نههههههه 🚫",
     "نهههههههه 🚫",
-    "نهههههههههههه 🚫",
-    "نهههههههههههههه 🚫",
-    "نهههههههههههههههههههههههههه 🚫",
-    "نههههههههههههههههههههههههههههههه 🚫",
-    "نههههههههههههههههههههههههههههههههه 🚫",
-    "نهههههههههههههههههههههههههههههههههه 🚫",
+    "نههههههههه 🚫",
     "نهههه قول دادم نه بگم 🤞",
     "دارم ورزش نه گفتن میکنم 🏋️♂️",
     "مگه گزینه «آره» وجود داره؟ 🤔",
@@ -80,7 +80,8 @@ function handleNo()
         if (before)
         {
             parent.insertBefore(noButton, yesButton);
-        } else {
+        } else
+        {
             parent.insertBefore(yesButton, noButton);
         }
 
@@ -118,7 +119,7 @@ function handleNo()
     let randomX, randomY;
 
     // --- X coordinate ---
-    if (Math.random() < 1 / 5)
+    if (Math.random() < 1 / 5 && !(10 <= noButtonTextIndex && noButtonTextIndex <= 18))
     {
         // 1 in 3 chance: pick a large X in [±40..±50]
         const directionX = Math.random() < 0.5 ? -1 : 1;
@@ -131,7 +132,7 @@ function handleNo()
     }
 
     // --- Y coordinate ---
-    if (Math.random() < 1 / 5)
+    if (Math.random() < 1 / 5 && !(10 <= noButtonTextIndex && noButtonTextIndex <= 18))
     {
         // 1 in 3 chance: pick a large Y in [±190..±200]
         const directionY = Math.random() < 0.5 ? -1 : 1;
