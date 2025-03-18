@@ -71,7 +71,6 @@ function handleNo()
         // Add the "ههه پول خوردی" message to the popup
         if (!hasSwapped)
         {
-
             const popup = document.getElementById('popup');
             const message = document.createElement('p');
             message.textContent = 'ههه گول خوردی';
