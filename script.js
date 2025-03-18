@@ -99,7 +99,7 @@ function handleNo()
     let randomX, randomY;
 
     // --- X coordinate ---
-    if (Math.random() < 1 / 5)
+    if (Math.random() < 1 / 3)
     {
         // 1 in 3 chance: pick a large X in [±40..±50]
         const directionX = Math.random() < 0.5 ? -1 : 1;
@@ -112,7 +112,7 @@ function handleNo()
     }
 
     // --- Y coordinate ---
-    if (Math.random() < 1 / 5)
+    if (Math.random() < 1 / 3)
     {
         // 1 in 3 chance: pick a large Y in [±190..±200]
         const directionY = Math.random() < 0.5 ? -1 : 1;
