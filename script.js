@@ -52,6 +52,8 @@ let hasSwapped = false; // Track if the swap has already happened
 let randomXBefore = null
 let randomYBefore = null
 
+let before = true
+
 function handleNo()
 {
     const currentTime = Date.now();
@@ -66,7 +68,12 @@ function handleNo()
         const parent = yesButton.parentNode;
 
         // Swap the buttons in the DOM
-        parent.insertBefore(noButton, yesButton);
+        if (before)
+        {
+            parent.insertBefore(noButton, yesButton);
+        } else {
+            parent.insertBefore(yesButton, noButton);
+        }
 
         // Add the "ههه پول خوردی" message to the popup
         if (!hasSwapped)
@@ -84,6 +91,7 @@ function handleNo()
 
         // Reset the last click time to prevent consecutive swaps
         lastClickTime = currentTime - 300; // Ensures next click is considered new
+        before = !before
         return; // Exit to skip normal behavior
     }
 
