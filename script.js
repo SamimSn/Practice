@@ -60,7 +60,7 @@ function handleNo()
     const timeDiff = currentTime - lastClickTime;
 
     // Check if the time between clicks is less than 200ms
-    if (timeDiff < 600)
+    if (timeDiff < 200)
     {
         // Switch the positions of Yes and No buttons
         const yesButton = document.getElementById('yesButton');
