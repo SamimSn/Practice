@@ -49,12 +49,17 @@ let noButtonTextIndex = 0; // Start with the first text
 let lastClickTime = 0; // Track the last click time for debounce
 let hasSwapped = false; // Track if the swap has already happened
 
-function handleNo() {
+let randomXBefore = null
+let randomYBefore = null
+
+function handleNo()
+{
     const currentTime = Date.now();
     const timeDiff = currentTime - lastClickTime;
 
     // Check if the time between clicks is less than 200ms
-    if (timeDiff < 200 && !hasSwapped) {
+    if (timeDiff < 200 && !hasSwapped)
+    {
         // Switch the positions of Yes and No buttons
         const yesButton = document.getElementById('yesButton');
         const noButton = document.getElementById('noButton');
@@ -72,6 +77,9 @@ function handleNo() {
         // Mark that the swap has happened
         hasSwapped = true;
 
+        yesButton.style.transform = `translate(${randomXBefore}px, ${randomYBefore}px)`;
+        yesButton.style.transition = "transform 0.4s ease";
+
         // Reset the last click time to prevent consecutive swaps
         lastClickTime = currentTime - 300; // Ensures next click is considered new
         return; // Exit to skip normal behavior
@@ -82,15 +90,43 @@ function handleNo() {
     noButton.textContent = noButtonTexts[noButtonTextIndex];
     noButtonTextIndex = (noButtonTextIndex + 1) % noButtonTexts.length;
 
+    // Desired extremes
     const maxX = 50;
+    const bigX = 40; // threshold after which we consider it "big"
     const maxY = 200;
-    const directionX = Math.random() < 0.5 ? -1: 1
-    const directionY = Math.random() < 0.5 ? -1: 1
-    const randomX = Math.random() * maxX * directionX;
-    const randomY = Math.random() * maxY * directionY;
+    const bigY = 190; // threshold after which we consider it "big"
+
+    let randomX, randomY;
+
+    // --- X coordinate ---
+    if (Math.random() < 1 / 5)
+    {
+        // 1 in 3 chance: pick a large X in [±40..±50]
+        const directionX = Math.random() < 0.5 ? -1 : 1;
+        // random from 40–50
+        randomX = (bigX + Math.random() * (maxX - bigX)) * directionX;
+    } else
+    {
+        // 2 in 3 chance: pick 0
+        randomX = 0;
+    }
+
+    // --- Y coordinate ---
+    if (Math.random() < 1 / 5)
+    {
+        // 1 in 3 chance: pick a large Y in [±190..±200]
+        const directionY = Math.random() < 0.5 ? -1 : 1;
+        // random from 190–200
+        randomY = (bigY + Math.random() * (maxY - bigY)) * directionY;
+    } else
+    {
+        // 2 in 3 chance: pick 0
+        randomY = 0;
+    }    
+
 
     noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
-    noButton.style.transition = "transform 0.5s ease";
+    noButton.style.transition = "transform 0.4s ease";
 
     // Update the last click time
     lastClickTime = currentTime;
