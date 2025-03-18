@@ -58,7 +58,7 @@ function handleNo()
     const timeDiff = currentTime - lastClickTime;
 
     // Check if the time between clicks is less than 200ms
-    if (timeDiff < 600 && !hasSwapped)
+    if (timeDiff < 600)
     {
         // Switch the positions of Yes and No buttons
         const yesButton = document.getElementById('yesButton');
@@ -69,14 +69,17 @@ function handleNo()
         parent.insertBefore(noButton, yesButton);
 
         // Add the "ههه پول خوردی" message to the popup
-        const popup = document.getElementById('popup');
-        const message = document.createElement('p');
-        message.textContent = 'ههه گول خوردی';
-        popup.insertBefore(message, popup.firstChild);
+        if (!hasSwapped)
+        {
+
+            const popup = document.getElementById('popup');
+            const message = document.createElement('p');
+            message.textContent = 'ههه گول خوردی';
+            popup.insertBefore(message, popup.firstChild);
+            hasSwapped = true;
+        }
 
         // Mark that the swap has happened
-        hasSwapped = true;
-
         yesButton.style.transform = `translate(${randomXBefore}px, ${randomYBefore}px)`;
         yesButton.style.transition = "transform 0.4s ease";
 
@@ -122,7 +125,7 @@ function handleNo()
     {
         // 2 in 3 chance: pick 0
         randomY = 10;
-    }    
+    }
 
 
     noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
