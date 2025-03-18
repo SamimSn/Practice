@@ -108,7 +108,7 @@ function handleNo()
     } else
     {
         // 2 in 3 chance: pick 0
-        randomX = 0;
+        randomX = 10;
     }
 
     // --- Y coordinate ---
@@ -121,7 +121,7 @@ function handleNo()
     } else
     {
         // 2 in 3 chance: pick 0
-        randomY = 0;
+        randomY = 10;
     }    
 
 
