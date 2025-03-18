@@ -46,11 +46,13 @@ button:focus {
 button#yesButton {
     background-color: #4CAF50; /* Green */
     color: white;
+    width: 250px;
 }
 
 button#noButton {
     background-color: #FF6347; /* Tomato red */
     color: white;
+    width: 250px;
 }
 
 button#yesButton:hover {
