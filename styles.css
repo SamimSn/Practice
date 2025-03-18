@@ -92,3 +92,18 @@ button#noButton:hover {
     text-align: center;
     display: none; /* Initially hidden */
 }
+
+
+/* Default layout for buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Media query for small screen sizes */
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+}

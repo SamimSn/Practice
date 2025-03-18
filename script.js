@@ -83,9 +83,11 @@ function handleNo() {
     noButtonTextIndex = (noButtonTextIndex + 1) % noButtonTexts.length;
 
     const maxX = 50;
-    const maxY = 5;
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    const maxY = 200;
+    const directionX = Math.random() < 0.5 ? -1: 1
+    const directionY = Math.random() < 0.5 ? -1: 1
+    const randomX = Math.random() * maxX * directionX;
+    const randomY = Math.random() * maxY * directionY;
 
     noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
     noButton.style.transition = "transform 0.5s ease";
